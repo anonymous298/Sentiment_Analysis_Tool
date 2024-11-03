@@ -93,16 +93,22 @@ if predict_button and text:
                     prediction = model.predict(input_qurie)
                     
                     # Display result with custom styling
-                    if prediction > 0.5:
+                    if prediction > 0.6:
                         st.markdown("""
                             <div class="sentiment-result positive">
                                 ✨ Positive Sentiment! 😊
                             </div>
                         """, unsafe_allow_html=True)
-                    else:
+                    elif prediction < 0.4:
                         st.markdown("""
                             <div class="sentiment-result negative">
                                 😔 Negative Sentiment
+                            </div>
+                        """, unsafe_allow_html=True)
+                    else:
+                        st.markdown("""
+                            <div class="sentiment-result" style="background-color: #F0F0F0; color: #666666;">
+                                😐 Neutral Sentiment
                             </div>
                         """, unsafe_allow_html=True)
 
